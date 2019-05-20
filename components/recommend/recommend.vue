@@ -1,34 +1,49 @@
 <template>
   <div class="recommend">
-    <div class="recommend-content">
-      <div v-if="recommends.length" class="slider-wrapper">
-        <slider>
-          <div v-for="item in recommends" :key="item.id">
-            <a :href="item.linkUrl">
-              <img :src="item.picUrl" :alt="item.id">
-            </a>
-          </div>
-        </slider>
+    <scroll class="recommend-content">
+      <div>
+        <div v-if="recommends.length" class="slider-wrapper">
+          <slider>
+            <div v-for="item in recommends" :key="item.id">
+              <a :href="item.linkUrl">
+                <img :src="item.picUrl" :alt="item.id">
+              </a>
+            </div>
+          </slider>
+        </div>
+        <div class="recommend-list">
+          <h1 class="list-title">热门歌单推荐</h1>
+          <ul>
+            <li v-for="item in discList" class="item" :key="item.dissid">
+              <div class="icon">
+                <img width="60" height="60" :src="item.imgurl" alt="">
+              </div>
+              <div class="text">
+                <h2 class="name" v-html="item.creator.name"></h2>
+                <p class="desc" v-html="item.dissname"></p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="recommend-list">
-        <h1 class="list-title">热门歌单推荐</h1>
-        <ul></ul>
-      </div>
-    </div>
+    </scroll>
   </div>
 </template>
 <script>
+import Scroll from 'base/scroll/scroll'
 import Slider from 'base/slider/slider'
 import {getRecommend, getDiscList} from 'api/recommend'
 import {ERR_OK} from 'api/config'
 export default {
   data() {
     return {
-      recommends: []
+      recommends: [],
+      discList: []
     }
   },
   components: {
-    Slider
+    Slider,
+    Scroll
   },
   created() {
     this._getRecommend()
@@ -44,10 +59,9 @@ export default {
     },
     _getDiscList() {
       getDiscList().then((res) => {
-        console.log(res)
         if (res.code === ERR_OK) {
-          console.log(res)
-          console.log(res)
+          console.log(res.data.list)
+          this.discList = res.data.list
         }
       })
     }
@@ -86,7 +100,7 @@ export default {
             padding-right: 20px
           .text
             display: flex
-            flex-direction: colum
+            flex-direction: column
             justify-content: center
             flex: 1
             line-height: 20px
