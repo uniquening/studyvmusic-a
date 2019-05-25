@@ -5,29 +5,33 @@
         <img width=100% height="100%">
       </div>
       <div class="top">
-        <div class="back"><i class="icon-back"></i></div>
+        <div class="back">
+          <i class="icon-back"></i>
+        </div>
         <h1 class="title"></h1>
         <h2 class="subtitle"></h2>
       </div>
       <div class="middle">
         <div class="middle-l">
-          <div class="cd">
-            <img src="#" class="image">
+          <div class="cd-wrapper">
+            <div class="cd">
+              <imgclass="image">
+            </div>
           </div>
-          <div class="playing-lyric-wrapper">
+          <!-- <div class="playing-lyric-wrapper">
             <div class="playing-lyric"></div>
-          </div>
+          </div> -->
         </div>
-        <div class="middle-r">
+        <!-- <div class="middle-r">
           <div class="lyric-wrapper">
             <div>
               <p class="text"></p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="bottom">
-        <div class="dot-wrapper">
+        <!-- <div class="dot-wrapper">
           <span class="dot"></span>
           <span class="dot"></span>
         </div>
@@ -35,16 +39,16 @@
           <span class="time time-l"></span>
           <div class="progress-bar-wrapper"></div>
           <span class="time time-r"></span>
-        </div>
+        </div> -->
         <div class="operators">
           <div class="icon i-left">
-            <i></i>
+            <i class="icon-sequence"></i>
           </div>
           <div class="icon i-left">
             <i class="icon-prev"></i>
           </div>
           <div class="icon i-center">
-            <i></i>
+            <i class="icon-play"></i>
           </div>
           <div class="icon i-right">
             <i class="icon-next"></i>
@@ -204,7 +208,7 @@ export default {
               &.current
                 color: $color-text
       .bottom
-        postion: absolute
+        position: absolute
         bottom: 50px
         width: 100%
         .dot-wrapper
